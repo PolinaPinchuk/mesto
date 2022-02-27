@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        <link href="./styles/index.css" rel="stylesheet" type="text/css" />
+        <title>Mesto</title>
+    </head>
+
+    <body class="page">
+        <div class="page__container">
+            <header class="header">
+                <img class="header__logo" src="./images/Vector.svg" alt="логотип" />
+            </header>
+            <main class="content">
+                <section class="profile">
+                    <img class="profile__avatar" src="./images/image.jpg" alt="Жак-Ив Кусто" />
+                    <div class="profile__info">
+                        <div class="profile__container">
+                            <h1 class="profile__title">Жак-Ив Кусто</h1>
+                            <p class="profile__subtitle">Исследователь океана</p>
+                        </div>
+                        <button class="profile__edit-button" type="button"></button>
+                    </div>
+                    <button class="profile__add-button" type="button"></button>
+                </section>
+                <section class="elements">
+                    <div class="element">
+                        <img class="element__image" src="./images/Анжела.jpg" alt="Чихуа хуа Анжела" />
+                        <div class="element__group">
+                            <h2 class="element__title">Анжела</h2>
+                            <button class="element__button" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__image" src="./images/Арнольд.jpg" alt="Ньюфаундленд Арнольд" />
+                        <div class="element__group">
+                            <h2 class="element__title">Арнольд</h2>
+                            <button class="element__button" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__image" src="./images/Браун.jpg" alt="Чау Чау Браун" />
+                        <div class="element__group">
+                            <h2 class="element__title">Браун</h2>
+                            <button class="element__button" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__image" src="./images/Джулия.jpg" alt="Корги Джулия" />
+                        <div class="element__group">
+                            <h2 class="element__title">Джулия</h2>
+                            <button class="element__button" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__image" src="./images/Иннокентий.jpg" alt="Мопс Иннокентий" />
+                        <div class="element__group">
+                            <h2 class="element__title">Иннокентий</h2>
+                            <button class="element__button" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="element">
+                        <img class="element__image" src="./images/Маруся.jpg" alt="Дворняга Маруся" />
+                        <div class="element__group">
+                            <h2 class="element__title">Маруся</h2>
+                            <button class="element__button" type="button"></button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer class="footer">
+                <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+            </footer>
+            <!-- Попап редактирования профиля -->
+            <section class="popup">
+                <div class="popup__container">
+                    <button class="popup__close"></button>
+                    <form name="edit-form" class="popup__content" novalidate>
+                        <h2 class="popup__title">Редактировать профиль</h2>
+                        <input id="name" class="popup__input" type="text" placeholder="Имя" name="name" value="Жак-Ив Кусто" required />
+                        <input id="job" class="popup__input" type="text" placeholder="О себе" name="job" value="Исследователь океана" required />
+                        <button class="popup__save">Сохранить</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <script src="./scripts/index.js"></script>
+    </body>
+</html>
