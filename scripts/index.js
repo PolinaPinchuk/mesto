@@ -2,12 +2,10 @@ const popupOpenButtonElement = document.querySelector(".profile__edit-button");
 const popupElement = document.querySelector(".popup");
 const popupCloseButtonElement = document.querySelector(".popup__close");
 
-const togglePopupVisibility = function () {
-    popupElement.classList.toggle("popup_opened");
-};
-
 const openPopup = function () {
     popupElement.classList.add("popup_opened");
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
 };
 popupOpenButtonElement.addEventListener("click", openPopup);
 
@@ -21,6 +19,8 @@ let formElement = popupElement.querySelector(".popup__content"); // Воспол
 // Находим поля формы в DOM
 let nameInput = formElement.querySelector("#name"); // Воспользуйтесь инструментом .querySelector()
 let jobInput = formElement.querySelector("#job"); // Воспользуйтесь инструментом .querySelector()
+let profileName = document.querySelector(".profile__title");
+let profileJob = document.querySelector(".profile__subtitle");
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -34,8 +34,6 @@ function formSubmitHandler(evt) {
     // Выберите элементы, куда должны быть вставлены значения полей
 
     // Вставьте новые значения с помощью textContent
-    let profileName = document.querySelector(".profile__title");
-    let profileJob = document.querySelector(".profile__subtitle");
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup();

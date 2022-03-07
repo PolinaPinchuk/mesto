@@ -1,7 +1,7 @@
 .element__button {
   width: 22px;
   height: 19px;
-  color: #000000;
+  background-color: transparent;
   box-sizing: border-box;
   background-image: url(../../../images/button3.svg);
   background-repeat: no-repeat;
