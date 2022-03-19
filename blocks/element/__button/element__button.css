@@ -12,7 +12,3 @@
   opacity: 0.5;
   cursor: pointer;
 }
-
-.element__button:active {
-  background: #000000;
-}

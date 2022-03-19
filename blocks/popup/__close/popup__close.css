@@ -5,13 +5,13 @@
   right: -40px;
   top: -40px;
   background: transparent center url("../../../images/Close Icon.svg");
-  background-size: auto;
   border: none;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
 .popup__close:hover {
