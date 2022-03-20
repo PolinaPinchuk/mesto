@@ -11,15 +11,15 @@ const popupOpenButtonElement = document.querySelector(".profile__edit-button");
 const popupElement = document.querySelector(".popup_type_profile");
 const popupCloseButtonElement = document.querySelector(".popup__close");
 popupOpenButtonElement.addEventListener("click", () => {
-    openPopup(popupElement);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
+    openPopup(popupElement);
 });
 popupCloseButtonElement.addEventListener("click", () => {
     closePopup(popupElement);
 });
 // Находим форму в DOM
-let formElement = popupElement.querySelector('[name="edit-form"]'); // Воспользуйтесь методом querySelector()
+const formElement = popupElement.querySelector('[name="edit-form"]'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
 let nameInput = formElement.querySelector("#name"); // Воспользуйтесь инструментом .querySelector()
 let jobInput = formElement.querySelector("#job"); // Воспользуйтесь инструментом .querySelector()
@@ -27,7 +27,7 @@ let profileName = document.querySelector(".profile__title");
 let profileJob = document.querySelector(".profile__subtitle");
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function formSubmitHandler(evt) {
+function submitFormHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     // Так мы можем определить свою логику отправки.
     // О том, как это делать, расскажем позже.
@@ -40,7 +40,7 @@ function formSubmitHandler(evt) {
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener("submit", formSubmitHandler);
+formElement.addEventListener("submit", submitFormHandler);
 
 // 2 попап
 const popupOpenButtonNewCard = document.querySelector(".profile__add-button");
@@ -53,22 +53,23 @@ popupCloseButtonNewCard.addEventListener("click", () => {
     closePopup(popupNewCard);
 });
 
-let formCard = popupNewCard.querySelector('[name="add-form"]'); 
+const formCard = popupNewCard.querySelector('[name="add-form"]'); 
 let placeInput = formCard.querySelector("#place"); 
 let linkInput = formCard.querySelector("#link"); 
-function formCardSubmitHandler(evt) {
+function submitFormCardHandler(evt) {
     evt.preventDefault(); 
     const renderCard = {
-place: placeInput.value,
-link: linkInput.value
+      place: placeInput.value,
+      link: linkInput.value
     };
 //   Создаем карточку на основе данных
 const cardElement = createCard(renderCard.place, renderCard.link);
   // Помещаем ее в контейнер карточек
   cardsContainer.prepend(cardElement);
     closePopup(popupNewCard);
+    event.currentTarget.reset();
 }
-formCard.addEventListener("submit", formCardSubmitHandler);
+formCard.addEventListener("submit", submitFormCardHandler);
 
 
 const initialCards = [
@@ -99,16 +100,16 @@ const initialCards = [
 ]; 
 
 //Напишите отдельную функцию создания карточки на основе шаблона template:
-    const createCard = (elementplace, elementlink) => {
-  // Клонируем шаблон, наплоняем его информацией из объекта data, навешиваем всякие обработчики событий, о которых будет инфа ниже
-    const cardTemplate = document.querySelector("#element-template").content;
-    const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
-    const cardTitle = cardElement.querySelector(".element__title");
-    const cardImage = cardElement.querySelector(".element__image");
-    cardTitle.textContent = elementplace;
-    cardImage.src = elementlink;
-    cardImage.alt = elementplace;
-    setCardEventListeners(cardElement);
+const createCard = (elementplace, elementlink) => {
+// Клонируем шаблон, наплоняем его информацией из объекта data, навешиваем всякие обработчики событий, о которых будет инфа ниже
+  const cardTemplate = document.querySelector("#element-template").content;
+  const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+  const cardTitle = cardElement.querySelector(".element__title");
+  const cardImage = cardElement.querySelector(".element__image");
+  cardTitle.textContent = elementplace;
+  cardImage.src = elementlink;
+  cardImage.alt = elementplace;
+  setCardEventListeners(cardElement);
   // Возвращаем получившуюся карточку
   return cardElement;
 }
@@ -149,7 +150,7 @@ function setCardEventListeners(itemElement) {
   });
 }
 function openPopupPhoto(itemElement) {
-  itemImage = itemElement.querySelector('.element__image');
+  const itemImage = itemElement.querySelector('.element__image');
   photoImage.src = itemImage.src;
   photoImage.alt = itemImage.alt;
   photoCaption.textContent = itemElement.querySelector('.element__title').textContent;
