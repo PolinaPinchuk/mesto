@@ -1,4 +1,3 @@
-//const popup = document.querySelector(".popup");
 const openPopup = function (popup) {
     popup.classList.add("popup_opened");
 };
@@ -21,10 +20,10 @@ popupCloseButtonElement.addEventListener("click", () => {
 // Находим форму в DOM
 const formElement = popupElement.querySelector('[name="edit-form"]'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let nameInput = formElement.querySelector("#name"); // Воспользуйтесь инструментом .querySelector()
-let jobInput = formElement.querySelector("#job"); // Воспользуйтесь инструментом .querySelector()
-let profileName = document.querySelector(".profile__title");
-let profileJob = document.querySelector(".profile__subtitle");
+const nameInput = formElement.querySelector("#name"); // Воспользуйтесь инструментом .querySelector()
+const jobInput = formElement.querySelector("#job"); // Воспользуйтесь инструментом .querySelector()
+const profileName = document.querySelector(".profile__title");
+const profileJob = document.querySelector(".profile__subtitle");
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function submitFormHandler(evt) {
@@ -54,8 +53,8 @@ popupCloseButtonNewCard.addEventListener("click", () => {
 });
 
 const formCard = popupNewCard.querySelector('[name="add-form"]'); 
-let placeInput = formCard.querySelector("#place"); 
-let linkInput = formCard.querySelector("#link"); 
+const placeInput = formCard.querySelector("#place"); 
+const linkInput = formCard.querySelector("#link"); 
 function submitFormCardHandler(evt) {
     evt.preventDefault(); 
     const renderCard = {
