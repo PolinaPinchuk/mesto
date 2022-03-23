@@ -1,8 +1,10 @@
 const openPopup = function (popup) {
     popup.classList.add("popup_opened");
+    document.addEventListener('keydown', closePopupByClickOnEsc);
 };
 const closePopup = function (popup) {
     popup.classList.remove("popup_opened");
+    document.removeEventListener('keydown', closePopupByClickOnEsc);
 };
 
 // 1 попап
@@ -155,3 +157,19 @@ function openPopupPhoto(itemElement) {
   photoCaption.textContent = itemElement.querySelector('.element__title').textContent;
   openPopup(popupPhoto);
 }
+
+//Функция, которая закрывает окошко по клику на затемненную область
+ const closePopupByClickOnOverlay = (event) =>{
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
+};
+popupElement.addEventListener('click', closePopupByClickOnOverlay);
+popupNewCard.addEventListener('click', closePopupByClickOnOverlay);
+popupPhoto.addEventListener('click', closePopupByClickOnOverlay);
+//Функция, которая закрывает окошко по клику на Esc
+const closePopupByClickOnEsc = (event) =>{
+  if (event.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+};
