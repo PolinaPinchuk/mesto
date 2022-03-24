@@ -47,7 +47,7 @@ const toggleButtonState = (inputList, submitButtonElement, object) => {
     submitButtonElement.classList.remove(object.inactiveButtonClass);
     submitButtonElement.removeAttribute('disabled')
   };
-}; 
+};
 
 const setEventListeners = (formElement, object) => {
   // Найдём все поля формы и сделаем из них массив

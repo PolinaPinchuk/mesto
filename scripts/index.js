@@ -49,6 +49,7 @@ const popupNewCard = document.querySelector(".popup_type_new-card");
 const popupCloseButtonNewCard = popupNewCard.querySelector(".popup__close");
 popupOpenButtonNewCard.addEventListener("click", () => {
     openPopup(popupNewCard);
+    isFormValid(popupNewCard, validationStructure);
 });
 popupCloseButtonNewCard.addEventListener("click", () => {
     closePopup(popupNewCard);
