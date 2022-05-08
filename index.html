@@ -53,7 +53,7 @@
                     <button class="popup__close" type="button"></button>
                     <form name="add-form" class="popup__content" novalidate>
                         <h2 class="popup__title">Новое место</h2>
-                        <input id="place" class="popup__input" type="text" required minlength="1" maxlength="30" 
+                        <input id="place" class="popup__input" type="text" required minlength="2" maxlength="30" 
                         placeholder="Название" name="place"/>
                         <span class="place-error popup__input-error"></span>
                         <input id="link" class="popup__input" type="url" required placeholder="Ссылка на картинку" 
@@ -85,8 +85,6 @@
         </template>
 
         <script src="./scripts/index.js" type="module" ></script>
-        <script src="./scripts/FormValidator.js" type="module" ></script>
-        <script src="./scripts/Card.js" type="module" ></script>
 
     </body>
 </html>
