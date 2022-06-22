@@ -17,12 +17,10 @@ export class Popup {
       }
   }
   setEventListeners() {
-      const closeButton = this._popup.querySelector(".popup__close");
-
-      this._popup.addEventListener("click", (e) => {
-          if (e.target === e.currentTarget) {
-              this.close();
-          }
-      });
+    this._popup.addEventListener('click', (event) => {
+      if (event.target.classList.contains('popup_opened') || event.target.classList.contains('popup__close')) {
+        this.close();
+      }
+    });
   }
 }
