@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-<!--      <link href="./styles/index.css" rel="stylesheet" type="text/css" /> -->  
         <title>Mesto</title>
     </head>
 
@@ -14,11 +13,13 @@
             </header>
             <main class="content">
                 <section class="profile">
-                    <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто" />
+                    <button class="profile__avatar-edit" type="button">
+                        <img class='profile__avatar' src="#" alt='Фото профиля'>
+                    </button>
                     <div class="profile__info">
                         <div class="profile__container">
-                            <h1 class="profile__title">Жак-Ив Кусто</h1>
-                            <p class="profile__subtitle">Исследователь океана</p>
+                            <h1 class="profile__title"></h1>
+                            <p class="profile__subtitle"></p>
                         </div>
                         <button class="profile__edit-button" type="button"></button>
                     </div>
@@ -63,6 +64,28 @@
                     </form>
                 </div>
             </section>
+            <!-- Попап редактирования аватара -->
+            <section class="popup popup_type_avatar">
+                <div class="popup__container">
+                  <button class="popup__close" type="button"></button>
+                  <form name="add-form" class="popup__content" novalidate>
+                    <h2 class="popup__title">Обновить аватар</h2>
+                    <input type="url" value="" placeholder="Ссылка на аватар" class="popup__input" required id="avatar" name="avatar" autocomplete="off">
+                    <span class="avatar-error popup__input-error"></span>
+                    <button type='submit' class="popup__save">Сохранить</button>
+                  </form>
+                </div>
+            </section>
+            <!-- Попап удаления карточки -->
+            <section class="popup popup_type_delete-confirm">
+                <div class="popup__container">
+                    <button class="popup__close" type="button"></button>
+                    <form name="add-form" class="popup__content" novalidate>
+                        <h2 class="popup__title">Вы уверены?</h2>
+                        <button class="popup__save" type="submit">Да</button>
+                    </form>
+                </div>
+            </section>
             <!-- Попап открытия картинки в большом размере  -->
             <section class="popup popup_type_image">
                 <figure class="popup__figure">
@@ -79,12 +102,11 @@
               <div class="element__group">
                 <h2 class="element__title"></h2>
                 <button class="element__button" type="button"></button>
+                <span class="element__button-count" type="button"></span>
               </div>
-              <button class="element__delete" type="button"></button>
+              <button class="element__delete"></button>
             </div>
         </template>
-
-<!--        <script src="./scripts/index.js" type="module" ></script> -->
 
     </body>
 </html>
