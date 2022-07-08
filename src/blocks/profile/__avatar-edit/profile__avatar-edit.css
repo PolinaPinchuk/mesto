@@ -23,7 +23,6 @@
     cursor: pointer;
     opacity: .8;
     background-image: url(../../../images/avatar.svg);
-    background-position: center;
   }
   @media (min-width: 768px) {
     .profile__avatar-edit{
