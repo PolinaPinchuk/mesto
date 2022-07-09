@@ -5,13 +5,19 @@ class Api {
       // тело конструктора
     }
 
+    _checkResponse(res) {
+      if (res.ok) {
+        return res.json()
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+    }
+
 // ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ
 
     getProfile () {
       return fetch (`${this._baseUrl}/users/me`, {
             headers: this._headers
-        }).then(res=>res.ok ? res.json() : Promise.reject(res.status))
-      //  .catch(console.log)
+        }).then(this._checkResponse)
     }
 
 // КАРТОЧКИ
@@ -19,8 +25,7 @@ class Api {
     getInitialCards() {
       return fetch (`${this._baseUrl}/cards`, {
           headers: this._headers
-      }).then(res=>res.ok ? res.json() : Promise.reject(res.status))
-    //  .catch(console.log)
+      }).then(this._checkResponse)
     }
 
 // РЕДАКТИРОВАНИЕ ПРОФИЛЯ
@@ -33,8 +38,7 @@ class Api {
             name: item.name, 
             about: item.job
           })
-      }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      }).then(this._checkResponse)
     }
 
 // АВАТАР
@@ -46,7 +50,7 @@ editAvatar(item) {
     body: JSON.stringify({
       avatar: item.avatar
     })
-  }).then(res => res.ok ? res.json() : Promise.reject(res.status))
+  }).then(this._checkResponse)
 }
 
 // ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
@@ -59,7 +63,7 @@ editAvatar(item) {
             name, 
             link
           })
-      }).then(res=>res.ok ? res.json() : Promise.reject(res.status))
+      }).then(this._checkResponse)
     }
 
 // УДАЛЕНИЕ КАРТОЧКИ
@@ -68,7 +72,7 @@ editAvatar(item) {
       return fetch (`${this._baseUrl}/cards/${id}`, {
           method: "DELETE",
           headers: this._headers
-      }).then(res=>res.ok ? res.json() : Promise.reject(res.status))
+      }).then(this._checkResponse)
     }
 
 // СНЯТИЕ ЛАЙКА
@@ -77,7 +81,7 @@ editAvatar(item) {
       return fetch (`${this._baseUrl}/cards/likes/${id}`, {
           method: "DELETE",
           headers: this._headers
-      }).then(res=>res.ok ? res.json() : Promise.reject(res.status))
+      }).then(this._checkResponse)
     }
   
 // ПОСТАНОВКА ЛАЙКА
@@ -86,7 +90,7 @@ editAvatar(item) {
       return fetch (`${this._baseUrl}/cards/likes/${id}`, {
           method: "PUT",
           headers: this._headers
-      }).then(res=>res.ok ? res.json() : Promise.reject(res.status))
+      }).then(this._checkResponse)
     }
   }
   

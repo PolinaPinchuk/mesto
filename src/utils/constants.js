@@ -10,6 +10,9 @@ export const validationStructure = {
     errorClass: "popup__input-error_active",
 };
 
+export const templateSelector = "#element-template";
+export const cardSelectorDefault = ".elements";
+
 export const initialCards = [
     {
         place: "Архыз",

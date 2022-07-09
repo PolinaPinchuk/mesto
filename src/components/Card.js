@@ -45,7 +45,7 @@ export class Card {
             this._cardLike.classList.remove("element__button_active");
             this._likeCountElement.textContent = this._likes.length;
         })
-   
+        .catch((err) => {console.log(err)})
     }
 
     createCard = () => {

@@ -6,6 +6,11 @@
   background-image: url(../../../images/button3.svg);
   background-repeat: no-repeat;
   border-style: none;
+  border: 0;
+  display: block;
+  background-position: center;
+  background-size: 22px 19px;
+  transition: .3 ease;
 }
 
 .element__button:hover {

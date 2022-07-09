@@ -1,4 +1,4 @@
-import { validationStructure, initialCards } from "../utils/constants.js";
+import { validationStructure, initialCards, templateSelector, cardSelectorDefault } from "../utils/constants.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -18,9 +18,6 @@ Promise.all([api.getProfile(), api.getInitialCards()])
     .catch((err) => console.log(err))
 
 import "./index.css";
-
-const templateSelector = "#element-template";
-const cardSelectorDefault = ".elements";
 
 // 1 попап
 const popupOpenButtonElement = document.querySelector(".profile__edit-button");
@@ -44,7 +41,7 @@ function submitFormHandler(data) {
     api.editProfile(data)
       .then(res => {
         console.log('res', res)
-        userInfo.setUserInfo(data);
+        userInfo.setUserInfo(res);
         editProfilePopup.close();
     })
     .catch((err) => console.log(err))
@@ -72,6 +69,7 @@ function submitFormCardHandler(data) {
         section.addItem(cardElement);
         addCardPopup.close();
     })
+    .catch((err) => console.log(err))
     .finally(() => {
         addCardPopup.showLoadingText(false);
     });
@@ -100,11 +98,15 @@ const createNewCard = (data) => {
     return card
 }
 
+const popupAvatar = document.querySelector(".popup_type_avatar");
+
 const formEditProfile = new FormValidator(validationStructure, popupElement);
 const cardAddFormValidator = new FormValidator(validationStructure, popupNewCard);
+const avatarFormValidator = new FormValidator(validationStructure, popupAvatar);
 
 formEditProfile.enableValidation();
 cardAddFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 export { templateSelector };
 
@@ -120,12 +122,16 @@ const section = new Section(
 );
 
 function submitFormAvatarHandler(data) {
+    editAvatarPopup.showLoadingText(true);
     api.editAvatar(data)
       .then(res => {
         userInfo.setUserInfo(res);
+        editAvatarPopup.close();
     })
       .catch((err) => console.log(err))
-      editAvatarPopup.close();
+      .finally(() => {
+        editAvatarPopup.showLoadingText(false);
+    });
 }
 
 const imagePopup = new PopupWithImage(".popup_type_image");
